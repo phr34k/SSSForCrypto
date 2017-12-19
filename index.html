@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Shamirs Secret Sharing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<style type="text/css">
+		.video-preview {
+			position: relative;
+		}
+
+		.overlay-desc {
+		  background: rgba(0,0,0,0);
+		  position: absolute;
+		  top: 0; right: 0; bottom: 0; left: 0;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}		
+
+.video-preview h2 {
+  color: white;
+  font-family: 'Nobile', sans-serif;
+  font-size: 2vw;
+  text-align: center;
+}
+
+	</style>		
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+					</div>
+
+					<!-- Hero -->
+						<section id="hero" class="container">
+							<header>
+								<h2>Shamirs Secret Sharing
+							</header>
+							<p>Keeps your most valuable data <strong>safe</strong> by not storing it in a single location</p>
+							<ul class="actions">
+								<li><a href="#home" class="button">Let's make secrets</a></li>
+							</ul>
+						</section>
+
+				</div>
+
+			<!-- Features 1 -->
+				<div class="wrapper">
+					<div class="container">
+						<div class="row">
+							<section>
+								
+<div class="container">
+	<p>Keep your most valuable data safe using the Shamirs Secret Sharing algoritm. With the Secret Sharing algorithm your data is broken apart in multiple pieces, the secret can only be reconstructed by having multiple pieces of the puzzle. Instead of storing your recovery seeds in plain text, this allows you to store them encrypted, decentralized with added redunancy.</p>
+	<p>
+	This website helps you construct a 2 out of 3 Shamirs Secret, completely clientside over free form text data without ever posting any of your data online. After generating the secret you can print out the pdf and distribute the pieces in safe locations. To give you an idea you can place one in the vault of a bank, one at your home and carry the other with you. When a single piece is seized or stolen your information is still protected. To recover your information the generated QR Codes can be scanned 1 by 1, any combination of two pairs from the same Shamir Secret will decode to the origional free form text. You can use the free form text to store your private key directly, or the (20/24 word seed) maintained by recovery procedures of populair hardware wallets.
+	</p>
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active" style="padding: 10px;">
+
+	<div class="list-group">
+	  <button type="button" class="list-group-item action-generate" data-toggle="pill" href="#generate">Generate a card</button>
+	  <button type="button" class="list-group-item action-recover" data-toggle="pill" href="#menu1">Recover from card</button>
+	  <!-- These items are not ready yet
+	  <button type="button" class="list-group-item action-lost" data-toggle="pill" href="#menu2">Lost a card</button>
+	  <button type="button" class="list-group-item action-lost" data-toggle="pill" href="#menu3">Store a card</button>	  
+	  -->
+	</div>
+
+  </div>
+
+  <div id="generate" class="tab-pane fade" style="padding: 10px;">
+
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	</div>
+
+    <div >
+    	<p>Generate a cryptographic using Shamir's Secret. In order to recover the data encrypted you are required to have 2 out of 3 pairs. You should keep one of the pairs physically with you, and store the other two at seperate locations.</p>
+	    <div class="form-group">
+			<textarea style="width:100%; max-width: 100%; min-width: 100%;" class="form-control" id="hello">test</textarea>	  
+		</div>
+	  <div class="row">
+	    <div class="col-md-4">
+	      <div id="qrcodeCanvas1" class="thumbnail align-middle"></div>
+	    </div>
+	    <div class="col-md-4">
+	      <div id="qrcodeCanvas2" class="thumbnail align-middle"></div>
+	    </div>
+		<div class="col-md-4">
+		  <div id="qrcodeCanvas3" class="thumbnail align-middle"></div>
+	    </div>    
+	  </div>		
+		<div class="form-group">
+			<button id="encode" class="btn btn-default">Generate</button>
+			<button id="print" class="btn btn-default">Print</button>
+		</div>			
+	  </div>
+  </div>
+  <div id="menu1" class="tab-pane fade" style="padding: 10px;">
+
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	</div>
+
+	  <div class="video-preview">
+	  	<video id="preview" style="width:100%;">
+	  		
+	  	</video>
+	     <div class="overlay-desc">
+	        <h2 class="status"></h2>
+	     </div>	  	
+	  </div>
+	  <div class="results-preview well well-lg" id="result">
+	  	
+	  </div>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#menuqr">Next</button>	  
+	</div>
+    <p>If you have lost one of your cards and stored it in our vault, we can send you a recovery email. Enter your email system and scan one of the access codes, if your information is known in our system we'll send you an email.</p>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleInputPin1" aria-describedby="emailHelp" placeholder="Enter password">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+  </div>  
+  </div>
+
+  <div id="menu3" class="tab-pane fade">
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#menuqrstore">Next</button>	  
+	</div>
+    <p>If you have lost one of your cards and stored it in our vault, we can send you a recovery email. Enter your email system and scan one of the access codes, if your information is known in our system we'll send you an email.</p>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleInputPin1" aria-describedby="emailHelp" placeholder="Enter password">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+  </div> 
+
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="" checked="true">
+    Store 1st card
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="" checked="true">
+    Store 2nd card
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="" checked="true">
+    Store 3rd card
+  </label>
+</div>
+
+
+  </div>
+
+  <div id="menuqr" class="tab-pane fade">
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	</div>
+    <div class="video-preview">
+    	<video style="width:100%;"></video>
+        <div class="overlay-desc"><h2 class="status"></h2></div>	  	
+    </div>
+    <div class="results-preview well well-lg"></div>
+  </div>
+
+  <div id="menuqrstore" class="tab-pane fade">
+	<div class="list-group">
+	  <button type="button" class="list-group-item" data-toggle="pill" href="#home">Back</button>
+	</div>
+    <div class="video-preview">
+    	<video style="width:100%;"></video>
+        <div class="overlay-desc"><h2 class="status"></h2></div>	  	
+    </div>
+    <div class="results-preview well well-lg"></div>
+  </div>
+</div>
+
+
+
+							</section>
+						</div>
+					</div>
+				</div>
+
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+						<header class="major">
+							<h2>Donate</h2>
+							<p>Please donate to keep this website available. <br />LTC: LPgk7pHykZC4T1S46MkrXqhhVRLCke6d3s</p>
+						</header>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	    	
+	<script type="text/javascript" src="http://jeromeetienne.github.io/jquery-qrcode/src/jquery.qrcode.js"></script>
+	<script type="text/javascript" src="http://jeromeetienne.github.io/jquery-qrcode/src/qrcode.js"></script>
+	<script type="text/javascript" src="https://rawgit.com/zhipeng-jia/snappyjs/master/dist/snappyjs.min.js"></script>	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>	
+	<script type="text/javascript" src="http://www.bichlmeier.info/sha256.js"></script>		
+	<script type="text/javascript" src="assets/js/sssa-js.js"></script>	
+	<script type="text/javascript" src="assets/js/instascan.min.js"></script>		
+
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+
+<script>
+
+		var decode = function( values )
+		{
+			var value = sssaJs.combine(values);
+		}
+		
+		var encode= function() {
+			var value = $("#hello").val();
+			var shares = sssaJs.create(2, 3, value);
+
+			$("#qrcodeCanvas1").empty();
+			$("#qrcodeCanvas2").empty();
+			$("#qrcodeCanvas3").empty();
+
+			var enc = new TextEncoder("utf-8");
+			var v1 = enc.encode(shares[0]);		
+			var a1 = SnappyJS.compress(v1);
+			console.log(v1);
+			console.log(a1);
+
+			jQuery('#qrcodeCanvas1').qrcode({ text: shares[0] });
+			jQuery('#qrcodeCanvas2').qrcode({ text: shares[1] });		
+			jQuery('#qrcodeCanvas3').qrcode({ text: shares[2] });			
+		}
+
+		$("#hello").keyup(function(){
+			encode();			
+		});
+
+		$("#encode").click(function(){
+			encode();			
+		});	
+
+		$("#print").click(function(){
+			var imgData1 = $('#qrcodeCanvas1 canvas')[0].toDataURL("image/jpeg");
+			var imgData2 = $('#qrcodeCanvas2 canvas')[0].toDataURL("image/jpeg");
+			var imgData3 = $('#qrcodeCanvas3 canvas')[0].toDataURL("image/jpeg");
+			var doc = new jsPDF();
+			doc.setFontSize(20);
+			doc.text(15, 20, 'Cut and store')
+			doc.setFontSize(10);
+			var text = 'Cutout the cards from the paper and store them on a safe location. Keep one on you, store one at home and the other on a second location.';
+			var lines = doc.splitTextToSize(text, 180);
+			doc.text(15, 27.5, lines);
+			doc.setFontSize(10);
+			doc.line(15, 35, 200, 35);
+			doc.text(75, 65, 'Security key 1 out 3');
+			doc.addImage(imgData1, 'JPEG', 15, 40, 50, 50);
+			doc.line(15, 95, 200, 95);
+			doc.text(75, 125, 'Security key 2 out 3');
+			doc.addImage(imgData2, 'JPEG', 15, 100, 50, 50);
+			doc.line(15, 155, 200, 155);
+			doc.text(75, 185, 'Security key 3 out 3');
+			doc.addImage(imgData3, 'JPEG', 15, 160, 50, 50);
+			doc.line(15, 215, 200, 215);
+			doc.output("dataurlnewwindow");
+		});
+
+		var scanner = null;
+		var keys = [];		
+		$('button[data-toggle="pill"]').on('shown.bs.tab', function (e) {			
+		  var target = $(e.target).attr("href") // activated tab
+
+
+		  if( scanner != null )
+		  {
+			  scanner.stop();
+		  }
+
+
+
+		  if( target == '#menu1') {
+		  	  keys = []
+
+
+		  	  $(".results-preview").empty();
+		  	  $(".results-preview").hide();
+		  	  $(".video-preview").show();
+
+		  	  $(".status").text('Scan the QR Code');
+		      scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+		      scanner.addListener('scan', function (content) {
+		        keys.push(content);
+		        $(".status").text(keys.length.toString() + ' out of 2 scanned');
+
+		        var res = sssaJs.combine(keys);
+		        $("#result").empty();
+		        $("#result").text(res);
+
+		        scanner.stop();
+		        scanner = null;
+		        $(".video-preview").hide();
+		        $(".results-preview").show();
+		      });
+
+		      Instascan.Camera.getCameras().then(function (cameras) {
+		        if (cameras.length > 0) {
+		          scanner.start(cameras[0]);
+		        } else {
+		          console.error('No cameras found.');
+		        }
+		      }).catch(function (e) {
+		        console.error(e);
+		      });
+		  } 
+		  else if( target == '#menuqr') {
+		  	  $("#menuqr .results-preview").empty();
+		  	  $("#menuqr .results-preview").hide();
+		  	  $("#menuqr .video-preview").show();
+		  	  $("#menuqr .status").text('Scan the QR Code');
+		      scanner = new Instascan.Scanner({ video: $("#menuqr video")[0] });
+		      scanner.addListener('scan', function (content) {
+		        $("#menuqr .results-preview").text(sha256_digest(content + sha256_digest($("#menu2 #exampleInputEmail1").val())));
+		        $("#menuqr .video-preview").hide();
+		        $("#menuqr .results-preview").show();
+		      });
+
+		      Instascan.Camera.getCameras().then(function (cameras) {
+		        if (cameras.length > 0) {
+		          scanner.start(cameras[0]);
+		        } else {
+		          console.error('No cameras found.');
+		        }
+		      }).catch(function (e) {
+		        console.error(e);
+		      });
+		  }
+		  else if( target == '#menuqrstore') {
+		  	  keys = []
+		  	  $("#menuqrstore .results-preview").empty();
+		  	  $("#menuqrstore .results-preview").hide();
+		  	  $("#menuqrstore .video-preview").show();
+		  	  $("#menuqrstore .status").text('Scan the QR Code');
+		      scanner = new Instascan.Scanner({ video: $("#menuqrstore video")[0] });
+		      scanner.addListener('scan', function (content) {
+				keys.push(content);		
+		        $("#menuqrstore .status").text(keys.length.toString() + ' out of 3 scanned');
+		        
+		        $("#menuqrstore .results-preview").show();
+		        if( keys.length == 3) {
+		        	$("#menuqrstore .video-preview").hide();
+		        	var a = sha256_digest(keys[0] + sha256_digest($("#menu3 #exampleInputEmail1").val()));
+		        	var b = sha256_digest(keys[1] + sha256_digest($("#menu3 #exampleInputEmail1").val()));
+		        	var c = sha256_digest(keys[2] + sha256_digest($("#menu3 #exampleInputEmail1").val()));
+		        	$("#menuqrstore .results-preview").text(a + '\n' + b + '\n' + c);
+		        }
+		      });
+
+		      Instascan.Camera.getCameras().then(function (cameras) {
+		        if (cameras.length > 0) {
+		          scanner.start(cameras[0]);
+		        } else {
+		          console.error('No cameras found.');
+		        }
+		      }).catch(function (e) {
+		        console.error(e);
+		      });
+		  }		  
+
+		  
+
+
+		  else  {
+		  	  scanner = null;
+		  }
+
+		  
+
+		});
+
+
+
+	</script>
+
+	</body>
+</html>
